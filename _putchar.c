@@ -1,9 +1,9 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
 * _putchar - prints a character to std output
 * @c: character to print
-* Return: Nothing
+* Return: number of characters printed
 */
 int _putchar(char c)
 {

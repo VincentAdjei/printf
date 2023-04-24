@@ -8,11 +8,11 @@
  */
 void print_string(char *string, int *count)
 {
-	*count += strlen(string);
 
 	while (*string)
 	{
 		_putchar(*string);
 		string++;
+		(*count)++;
 	}
 }

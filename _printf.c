@@ -9,19 +9,11 @@ int _printf(const char *format, ...)
 {
 	int count = 0;
 	va_list args;
-	char *error = "Segmentation fault";
 
 	va_start(args, format);
 
 	if (format == NULL)
-	{
-		while (*error)
-		{
-			_putchar(*(error++));
-			count++;
-		}
-		return (count);
-	}
+		return (-1);
 
 	while (*format)
 	{

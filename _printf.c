@@ -19,7 +19,16 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			handleSpecifier(*(++format), args, &count);
+			while (*(++format) == ' ')
+			{
+				continue;
+			}
+			if (!(*format))
+			{
+				_print_string("(null)");
+				return (-1);
+			}
+			handleSpecifier(*format, &args, &count);
 			format++;
 			continue;
 		}

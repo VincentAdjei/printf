@@ -9,6 +9,12 @@
 void print_string(char *string, int *count)
 {
 
+	if (!string)
+	{
+		(*count) += _print_string("(null)");
+		return;
+	}
+
 	while (*string)
 	{
 		_putchar(*string);

@@ -7,12 +7,12 @@
  * @count: characters counter
  * Return: Nothing
  */
-void handleSpecifier(char s, va_list args, int *count)
+void handleSpecifier(char s, va_list *args, int *count)
 {
 	switch (s)
 	{
 		case 'c':
-		_putchar(va_arg(args, int));
+		_putchar(va_arg(*args, int));
 		(*count)++;
 		break;
 
@@ -22,6 +22,14 @@ void handleSpecifier(char s, va_list args, int *count)
 		break;
 
 		case 's':
-		print_string(va_arg(args, char*), count);
+		print_string(va_arg(*args, char*), count);
+		break;
+
+		case ' ':
+		(*count) += _print_string("(null)");
+		break;
+
+		case 'r':
+		print_r(va_arg(*args, char*), count);
 	}
 }

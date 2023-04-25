@@ -9,7 +9,7 @@ int main(void)
 	int len;
     int len2;
     int d;
-    
+    int h = 56;
     char *s = "Let's try to printf a simple sentence \n";
     len = _printf(s);
     len2 = printf(s);
@@ -18,10 +18,12 @@ int main(void)
     _printf("String:[%s]\n", "I am a string !");
     printf("String:[%s]\n", "I am a string !");
     printf("len1: %d, len2: %d\n", len, len2);
-    printf("%s sjjq");
-    d = printf(NULL);
+    
+    d = _printf("%r", "Baribor");
+    
     printf("null is: %d", d);
     
+    print_r("Good", &h);
 	
 	return (0);
 }

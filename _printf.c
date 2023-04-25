@@ -40,21 +40,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-/**
- * print_buffer - Prints the contents of the buffer if it exists.
- *
- * @buffer: Array of characters.
- * @buffer_len: Length of the buffer.
- *
- * This function prints the contents of the buffer to stdout if it is not empty.
- * It also resets the buffer length to zero.
- */
-void print_buffer(char buffer[], int *buffer_len)
-{
-  if (*buffer_len > 0)
-  {
-    write(STDOUT_FILENO, buffer, *buffer_len);
-  }
-  *buffer_len = 0;
-}

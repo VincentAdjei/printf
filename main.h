@@ -1,27 +1,47 @@
-#ifndef MAIN_H_PRINTF
-#define MAIN_H_PRINTF
-
+#ifndef MAIN_H
+#define MAIN_H
+#include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
-#include<stdarg.h>
 
 #define UNUSED(x) (void)(x)
 #define BUFF_SIZE 1024
 
-int _putchar(char c);
+/* FLAGS */
+#define F_MINUS 1
+#define F_PLUS 2
+#define F_ZERO 4
+#define F_HASH 8
+#define F_SPACE 16
+
+/* SIZES */
+#define S_LONG 2
+#define S_SHORT 1
+
+/**
+ * struct fmt - Struct op
+ *
+ * @fmt: The format.
+ * @fn: The function associated.
+ */
+struct fmt
+{
+	char fmt;
+	int (*fn)(va_list, char[], int, int, int, int);
+};
+
+
+/**
+ * typedef struct fmt fmt_t - Struct op
+ *
+ * @fmt: The format.
+ * @fm_t: The function associated.
+ */
+typedef struct fmt fmt_t;
+
 int _printf(const char *format, ...);
-void handleSpecifier(char s, va_list *args, int *count);
-void print_string(char *string, int *count);
-int _print_string(char *s);
-void print_r(char *s, int *count);
-
-/****************** UTILS ******************/
-int is_printable(char);
-int append_hexa_code(char, char[], int);
-int is_digit(char);
-
-long int convert_size_number(long int num, int size);
-long int convert_size_unsgnd(unsigned long int num, int size);
+int handle_print(const char *fmt, int *i,
+va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
 
@@ -85,5 +105,13 @@ int write_pointer(char buffer[], int ind, int length,
 int write_unsgnd(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
+
+/****************** UTILS ******************/
+int is_printable(char);
+int append_hexa_code(char, char[], int);
+int is_digit(char);
+
+long int convert_size_number(long int num, int size);
+long int convert_size_unsgnd(unsigned long int num, int size);
 
 #endif
